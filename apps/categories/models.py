@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class Category(models.Model):
+class Category(models.Model): #Django ORM
     title = models.CharField(
         max_length=255,
         verbose_name="Заголовок"
