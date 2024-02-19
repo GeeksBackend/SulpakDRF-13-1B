@@ -1,20 +1,15 @@
-from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView
+from rest_framework.viewsets import GenericViewSet
+from rest_framework import mixins
 
 from apps.products.models import Product
 from apps.products.serializers import ProductSerializer
 
 # Create your views here.
-class ProductListAPI(ListAPIView): #GET
+class ProductViewSet(GenericViewSet,
+                     mixins.ListModelMixin,
+                     mixins.RetrieveModelMixin,
+                     mixins.CreateModelMixin,
+                     mixins.UpdateModelMixin,
+                     mixins.DestroyModelMixin):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-
-class ProductCreateAPI(CreateAPIView): #POST
-    queryset = Product.objects.all()
-    serializer_class = ProductSerializer
-
-class ProductUpdateAPI(UpdateAPIView): #PUT, PATCH
-    queryset = Product.objects.all()
-    serializer_class = ProductSerializer
-
-class ProductDestroyAPI(DestroyAPIView): #DELETE
-    queryset = Product.objects.all()
