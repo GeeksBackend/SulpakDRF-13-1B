@@ -1,8 +1,8 @@
 from rest_framework.routers import DefaultRouter
 
-from apps.settings.views import SettingAPI
+from apps.users.views import UserAPI
 
 router = DefaultRouter()
-router.register('setting', SettingAPI, "api_setting")
+router.register('users', UserAPI, "api_users")
 
 urlpatterns = router.urls
